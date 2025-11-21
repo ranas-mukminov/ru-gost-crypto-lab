@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  nginx_gost:
+    image: nginx:latest
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx_gost.conf:/etc/nginx/nginx.conf:ro
+      # In a real scenario, we would mount certificates here
+    networks:
+      - lab_net
+
+  backend_app:
+    image: python:3.11-slim
+    command: python3 -m http.server 8080
+    networks:
+      - lab_net
+
+networks:
+  lab_net:

@@ -1,0 +1,15 @@
+name: Codex Review
+
+on:
+  pull_request:
+    types: [opened, ready_for_review]
+  issue_comment:
+    types: [created]
+
+jobs:
+  codex_review:
+    if: contains(github.event.comment.body, '@codex review') || github.event.action == 'opened'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Codex Review
+        run: echo "Codex Review triggered"

@@ -1,0 +1,9 @@
+name: web_portal_gov
+type: web_tls
+topology:
+  services:
+    - nginx_gost
+    - backend_app
+test_plan:
+  compatibility: true
+  performance: true
